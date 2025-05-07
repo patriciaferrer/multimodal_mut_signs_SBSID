@@ -5,8 +5,6 @@ This repository contains the code for extracting multimodal mutational signature
 
 ## **Scripts description and usage**
 
----
-
 ### 1. Obtain SBS+ID multimodal mutation count matrix
 
 The first step is to use *SigProfilerMatrixGenerator* to generate mutation count matrices from the VCF files of multiple samples (n). This will produce two matrices:

@@ -8,7 +8,7 @@ This repository contains the code for extracting multimodal mutational signature
 ### 1. Obtain SBS+ID multimodal mutation count matrix
 
 The first step is to use *SigProfilerMatrixGenerator* to generate mutation count matrices from the VCF files of multiple samples (n). This will produce two matrices:
-- `SBS96` (96 x n): 96 mutation types for for single base substitutions
+- `SBS96` (96 x n): 96 mutation types for single base substitutions
 - `ID83` (83 x n): 83 mutation types for small insertions and deletions
 
 To extract **multimodal mutational signatures**, both matrices are combined into a single mutation count matrix `SBS+ID` with 179 features (96 from SBS + 83 from ID), resulting in a matrix of size `179 x n`.

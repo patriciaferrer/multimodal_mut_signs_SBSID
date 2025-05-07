@@ -3,17 +3,29 @@ This repository contains the code for extracting multimodal mutational signature
 
 ---
 
-### **Script description and usage**
+## **Script description and usage**
 
-#### 1. Extract SBS and ID mutation count matrices and join in a multimodal matrix
+---
 
-The first step is to use *SigProfilerMatrixGenerator* to generate mutation count matrices from the VCF files of multiple samples. This will produce two matrices:
-- `SBS96` (n × 96): for single base substitutions
-- `ID83` (n × 83): for small insertions and deletions
+### 1. Obtain SBS+ID multimodal mutation count matrix
 
-To extract **multimodal mutational signatures**, both matrices are combined into a single mutation count matrix `SBS+ID` with 179 features (96 from SBS + 83 from ID), resulting in a matrix of size `n × 179`.
+The first step is to use *SigProfilerMatrixGenerator* to generate mutation count matrices from the VCF files of multiple samples (n). This will produce two matrices:
+- `SBS96` (96 x n): 96 mutation types for for single base substitutions
+- `ID83` (83 x n): 83 mutation types for small insertions and deletions
+
+To extract **multimodal mutational signatures**, both matrices are combined into a single mutation count matrix `SBS+ID` with 179 features (96 from SBS + 83 from ID), resulting in a matrix of size `179 x n`.
 
 To join the matrices, run:
 
 ```bash
-Rscript 01_join_sbs_id_matrix
+Rscript 01_join_sbs_id_matrix.R
+
+### 2. Extract multimodal signatures
+
+The combined `SBS+ID` matrix (with 179 mutation types: 96 SBS + 83 ID types) is used as input for *SigProfilerExtractor* to extract multimodal mutational signatures with NMF. The output will be a `179 × k` matrix, where `k` is the number of extracted signatures. Each signature is composed of 96 channels for SBS mutations and 83 channels for ID mutations
+
+To run the extraction, use:
+
+```bash
+python 02_SigProfiler_Extract.py
+

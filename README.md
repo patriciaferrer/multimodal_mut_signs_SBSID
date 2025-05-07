@@ -3,7 +3,7 @@ This repository contains the code for extracting multimodal mutational signature
 
 ---
 
-## **Script description and usage**
+## **Scripts description and usage**
 
 ---
 
@@ -19,6 +19,7 @@ To join the matrices, run:
 
 ```bash
 Rscript 01_join_sbs_id_matrix.R
+```
 
 ### 2. Extract multimodal signatures
 
@@ -28,4 +29,29 @@ To run the extraction, use:
 
 ```bash
 python 02_SigProfiler_Extract.py
+```
+
+### 3. Split the multimodal signature matrix
+
+*SigProfilerExtractor* does not recognize or label SBS+ID (multimodal) signatures. Therefore, the extracted `179 × k` signature matrix must be separated into:
+
+- SBS-only signature matrix → a `96 × k` matrix containing only the SBS portion
+- ID-only signature matrix` → an `83 × k` matrix containing only the ID portion
+
+To split the multimodal signature matrix into SBS and ID components, run:
+
+```bash
+Rscript 03_divide_SBS_ID_signatures
+```
+
+### 4. Assign COSMIC reference signatures
+
+Once the SBS and ID signature matrices have been separated, each one can be compared to known COSMIC reference signatures using *SigProfilerAssignment*. This step identifies the likely composition of each *de novo* multimodal signature.
+
+To perform the assignment, run:
+
+```bash
+python 04_SigProfiler_decompose_SBSID_signatures.py
+```
+
 

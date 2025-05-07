@@ -52,4 +52,10 @@ To perform the assignment, run:
 python 04_SigProfiler_decompose_SBSID_signatures.py
 ```
 
+## References
+
+This repository uses the [*SigProfiler*] tool developed by Alexandrov *et al.*
+
+Alexandrov, L.B., Kim, J., Haradhvala, N.J. et al. The repertoire of mutational signatures in human cancer. Nature 578, 94–101 (2020). https://doi.org/10.1038/s41586-020-1943-3
+
 

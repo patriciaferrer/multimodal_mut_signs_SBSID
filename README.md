@@ -34,7 +34,7 @@ python 02_SigProfiler_Extract.py
 *SigProfilerExtractor* does not recognize or label SBS+ID (multimodal) signatures. Therefore, the extracted `179 × k` signature matrix must be separated into:
 
 - SBS-only signature matrix → a `96 × k` matrix containing only the SBS portion
-- ID-only signature matrix` → an `83 × k` matrix containing only the ID portion
+- ID-only signature matrix → a `83 × k` matrix containing only the ID portion
 
 To split the multimodal signature matrix into SBS and ID components, run:
 

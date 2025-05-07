@@ -7,4 +7,13 @@ This repository contains the code for extracting multimodal mutational signature
 
 #### 1. Extract SBS and ID mutation count matrices and join in a multimodal matrix
 
-**Run:**
+The first step is to use *SigProfilerMatrixGenerator* to generate mutation count matrices from the VCF files of multiple samples. This will produce two matrices:
+- `SBS96` (n × 96): for single base substitutions
+- `ID83` (n × 83): for small insertions and deletions
+
+To extract **multimodal mutational signatures**, both matrices are combined into a single mutation count matrix `SBS+ID` with 179 features (96 from SBS + 83 from ID), resulting in a matrix of size `n × 179`.
+
+To join the matrices, run:
+
+```bash
+Rscript 01_join_sbs_id_matrix
